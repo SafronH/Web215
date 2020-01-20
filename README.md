@@ -6,5 +6,3 @@ I’ve invited the following to collaborate on this repo for Web-215:-
 •	ElenaZelenina 
 •	Kewalthapa
 •	KendallCheek 
-
-
