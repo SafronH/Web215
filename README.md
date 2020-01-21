@@ -5,7 +5,7 @@ This repo is to get comfortable collaborating with my classmates. I’ve invited
 ►	divonbriesen
 ►	thinhpham2606
 ►	robert-m-proph
-►	mseelingerjr
+►	mseelingerjr was here 9:57pm 1/20/20
 ►	ElenaZelenina was here 10:00 pm 1/19/20
 ►	Kewalthapa
 ►	KendallCheek was here 9:35 pm 1/19/20
