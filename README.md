@@ -10,6 +10,7 @@ This repo is to get comfortable collaborating with my classmates. I’ve invited
 -	Kewalthapa
 -	KendallCheek was here 9:35 pm 1/19/20
 -	LTSchmiddy
+-Emmanuel sosa was here 6:10pm 1/21/2020
 
    
 
