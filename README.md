@@ -11,7 +11,7 @@ This repo is to get comfortable collaborating with my classmates. I’ve invited
 -	KendallCheek was here 9:35 pm 1/19/20
 -	LTSchmiddy
 -  Emmanuel sosa was here 6:10pm 1/21/2020
--  Safron Haile was here at 12:01 p.m 1/24/2020.
+-  Safron Haile was here at 12:01 p.m 1/24/2020
 
    
 
