@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>faviorate color</title>
+    <!--    begin meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--    end meta-->
+    <!--css file links -->
+   <style>
+   
+   @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i');
+* {
+/*       border: 1px dashed black; */
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    overflow-y: scroll;
+    background-color: #F5F5DC;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto Mono', 'Roboto', Helvetica, sans-serif;
+    font-weight: 300;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin: 1vw;
+    padding: 2vw;
+    padding-left: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+#tutorial-btn {
+    width: 19px;
+    height: 19px;
+    background-color: transparent;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 50%;
+    padding: 0;
+    font-size: .7rem;
+}
+
+#alert-box {
+    margin-left: 15%;
+    /* material red */
+    color: #f44336;
+}
+
+#create-color-input {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #424242;
+    display: inline;
+    max-width: 60%;
+    margin-left: 1rem;
+    padding: 10px;
+    text-align: center;
+    font-size: calc(.75rem + .5vw);
+    font-family: 'Roboto Mono';
+}
+
+#create-color-input:focus {
+    /* sky blue */
+    border-bottom: 3px solid #03A9F4;
+}
+
+#create-color-btn {
+    display: inline-block;
+    border: none;
+    appearance: none;
+    box-shadow: none;
+    margin: 0 0 0 5px;
+    padding: 0 0 0 0;
+    vertical-align: bottom;
+    background-color: transparent;
+    font-size: calc(2rem + .5vw);
+    /* dark grey */
+    color: #424242;
+}
+
+#toggle-all-btn {
+    vertical-align: bottom;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #01579B;
+    border-radius: 1px;
+    width: 2rem;
+    height: 2rem;
+    border-width: 0;
+    transition: all .3s linear;
+    margin-left: 1vw;
+    color: white;
+    font-weight: 100;
+}
+
+#toggle-all-btn::before {
+    content: "✓";
+    font-size: 25px;
+    padding: 5px;
+}
+
+#toggle-all-btn:checked {
+    background-color: #03A9F4;
+}
+
+#toggle-all-btn:focus {
+    outline: 0 none;
+    box-shadow: none;
+}
+
+.app-container {
+    max-width: 100%;
+    text-align: center;
+}
+
+.title-div {
+    margin: .25vw;
+    padding: 20px;
+    border-radius: 3px;
+    /* darker blue */
+    background: #03A9F4;
+    text-align: center;
+}
+
+.title-div .title {
+    color: #FFFFFF;
+    font-size: calc(1.5rem + .5vw);
+    font-weight: 100;
+}
+
+.tutorial-div {
+    border-left: calc(2rem + 4vw) solid grey;
+    border-radius: 3px;
+    margin: .25vw;
+    padding: 3vw 7vw;
+    text-align: left;
+}
+
+.tutorial-div h2 {
+    color: #03A9F4;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.feature-div {
+    margin: 3vw;
+}
+
+.tutorial-div .feature-title {
+    display: block;
+    color: #F5F5DC ;
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-bottom: 1vw;
+}
+
+.tutorial-div .feature-text {
+    display: block;
+    color: darkgrey;
+    font-size: 1rem;
+    margin-left: 1.5rem;
+    line-height: 1.5rem;
+    font-family: 'Roboto', Helvetica, sans-serif;
+}
+
+.content-div {
+    max-height: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.color-create-div {
+    text-align: left;
+}
+
+.colors-view-box {
+    text-align: left;
+}
+
+.color-check-box {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #01579B;
+    border-radius: 1px;
+    width: 2rem;
+    height: 2rem;
+    border-width: 0;
+    transition: all .3s linear;
+    margin: 0;
+    margin-right: calc(1rem + .5vw);
+}
+
+.color-check-box:checked {
+    background-color: #03A9F4;
+}
+
+.color-check-box:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.colors-strikethrough {
+    text-decoration: line-through;
+    /*light grey*/
+    color: #E0E0E0 !important;
+}
+
+.color-label {
+    display: inline-block;
+    vertical-align: middle;
+    overflow-wrap: break-word;
+    max-width: 70%;
+    margin: 0 5px;
+    font-size: calc(1rem + .5vw);
+    /* darkest grey */
+    color: #424242;
+}
+
+.update-Box {
+    display: inline-block;
+    border: none;
+    border-bottom: 3px solid #03A9F4;
+    /* sky blue */
+    vertical-align: middle;
+    margin-left: 5px;
+    width: 60%;
+    padding: 10px;
+    font-size: calc(1rem + .5vw);
+    /* darkest grey */
+    color: #424242;
+}
+
+.delete-btn {
+    float: right;
+    display: inline-block;
+    border: none;
+    vertical-align: middle;
+    background-color: transparent;
+    font-size: calc(1rem + 1vw);
+    margin-top: 0;
+    padding: 0;
+    /* light grey */
+    color: #E0E0E0;
+}
+
+.delete-btn:hover {
+    /* darkest grey */
+    color: #424242;
+}
+
+.spacer {
+    height: 100px;
+    display: block;
+}
+
+.version-number {
+    /* darkest grey */
+    color: #424242;
+    font-weight: 600;
+    font-size: calc(.5rem + .5vw);
+}
+
+@media (min-width:1025px) {
+    .app-container {
+        max-width: 100vw;
+        margin: 0 auto;
+    }
+    .content-div {
+        max-width: 50vw;
+    }
+}
+
+header {
+  background-color: #9BC1C2;
+  background-repeat: no-repeat;
+  height: 150px;
+  margin-bottom:15px;
+}
+h1 {
+  padding-top: 50px;
+  padding-left: 2em;
+}
+
+h2{
+  font-family:Bradley Hand, cursive;	
+  color: #96ceb7;
+  text-shadow: 1px 1px 1px black;
+  padding-left: 4em;
+        
+}
+footer {
+  background-color: #9BC1C2;
+  font-size: .60em;
+  font-style: italic;
+  text-align: center;
+  padding: 1em;
+}
+   
+   
+   </style>
+    <!--favicon links -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<header>
+  <h1>Safron's Travel Guide&reg;</h1>
+  <h2><em>Travel Smarter, cheaper, longer....</em></h2>
+</header>
+
+<body>
+    <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="app-container">
+        <div class="header-div">
+            <div class="title-div">
+                <span class="title">What is your favorite color?</span>
+                <span class="version-number">click me</span>
+                <button id="tutorial-btn" onclick="view.toggleTutorialDiv()">?</button>
+            </div>
+        </div>
+        <div class="tutorial-div hide">
+            <h2>Your favorite color</h2>
+            <div class="feature-div">
+                <span class="feature-title">1-ADD</span>
+                <div class="feature-text">
+                    Add your favorite color by pressing the enter key or tap the '+' button.
+                </div>
+            </div>
+            <div class="feature-div">
+                <span class="feature-title">2-SEE</span>
+                <div class="feature-text">
+                    You'll see it right away after you add your favorite color. 
+                    Your latest color will appear 1st on the list.
+                </div>
+            </div>
+            <div class="feature-div">
+                <span class="feature-title">3-CHECK</span>
+                <div class="feature-text">
+                    Check off or delete with the dark blue checkbox next to your color choice.
+                    Mark all your faviorite with the dark blue checkmark button.
+                </div>
+            </div>
+            <div class="feature-div">
+                <span class="feature-title">4-CHANGE</span>
+                <div class="feature-text">
+                    Make changes by tapping on your colors.
+                    Save it by pressing enter key on your keyboard or tap outside of the box.
+                    Cancel your change by pressing escape key on your keyword.
+                </div>
+            </div>
+            <div class="feature-div">
+                <span class="feature-title">5-DELETE</span>
+                <div class="feature-text">
+                    Delete your colore by tapping the 'x' button next to your color.
+                </div>
+            </div>
+        </div>
+        <div class="content-div">
+            <div class="color-create-div">
+                <input id="toggle-all-btn" class="hide" type="checkbox" onclick="controller.toggleAll()">
+                <input id="create-color-input" type="text" placeholder="Please enter here" onkeyup="controller.createcolorEntered()">
+                <button id="create-color-btn" class="hide" onclick="controller.createcolor()">+</button>
+                <div id="alert-box"></div>
+            </div>
+            <div class="colors-view-box">
+                <br>
+                <ul></ul>
+            </div>
+        </div>
+        <div class="spacer"></div>
+    </div>
+    <!--javascript file links -->
+    <script>//  Global variables declared for enter and escape keys.
+var enter_key = 13;
+var esc_key = 27;
+//  colorModel object represents the model of this app.
+var colorModel = {
+    colors: [],
+    countcolors: function () {
+        var totalcolors = this.colors.length;
+        var completedcolors = 0;
+        //  Gets the number of completed colors.
+        this.colors.forEach(function (color) {
+            if (color.completed === true) {
+                completedcolors++;
+            }
+        });
+        return {
+            totalcolors: totalcolors,
+            completedcolors: completedcolors
+        };
+    },
+    createcolor: function (colorText) {
+        var alertBox = document.getElementById("alert-box");
+        //  We trim the users color input before adding it to our data array.
+        var trimmedcolorText = colorText.trim();
+        if (trimmedcolorText) {
+            this.colors.push({
+                colorText: trimmedcolorText,
+                completed: false
+            });
+            alertBox.textContent = "";
+        } else {
+            alertBox.textContent = "Please enter something";
+            setTimeout(function () {
+                alertBox.textContent = "";
+            }, 3000);
+        }
+    },
+    changecolor: function (position, colorText) {
+        this.colors[position].colorText = colorText;
+    },
+    deletecolor: function (position) {
+        this.colors.splice(position, 1);
+    },
+    //  Takes in color item position and switches the boolean value of the completed status.
+    toggleCompleted: function (position) {
+        //  Grabs the color item from the array and sets it to the color variable.
+        var color = this.colors[position];
+        //  Switches the boolean value of the completed status.
+        color.completed = !color.completed;
+    },
+    toggleAll: function () {
+        var totalcolors = this.colors.length;
+        var completedcolors = 0;
+
+        //  Gets the number of completed colors.
+        this.colors.forEach(function (color) {
+            if (color.completed === true) {
+                completedcolors++;
+            }
+        });
+
+        this.colors.forEach(function (color) {
+            //  Case 1: If everything's true, make everything false.
+            if (completedcolors === totalcolors) {
+                color.completed = false;
+                //  Case 2: Otherwise, make everything true.
+            } else {
+                color.completed = true;
+            }
+        });
+    },
+    isMobileDevice: function () {
+        return (
+            typeof window.orientation !== "undefined" ||
+            navigator.userAgent.indexOf("IEMobile") !== -1
+        );
+    }
+};
+
+//  view object represents the view of this app.
+var view = {
+    displaycolors: function () {
+        //  grabs the <ul> element and sets it to colorsUl variable.
+        var colorsUl = document.querySelector("ul");
+        //  Clears out the content inside <ul> to make sure we're starting clean.
+        colorsUl.innerHTML = "";
+        //  Note that the 'this' argument in the forEach method is to bind 'this' for the callback function so it has access to the view object inside the callback.
+        colorModel.colors.forEach(function (color, position) {
+            //  Creates an li element
+            var colorLi = document.createElement("li");
+            //  Builds the checkbox
+            var toggleCheckbox = document.createElement("input");
+            toggleCheckbox.type = "checkbox";
+            toggleCheckbox.classList.add("color-check-box");
+            toggleCheckbox.setAttribute(
+                "onchange",
+                "controller.toggleCompleted(this)"
+            );
+
+            //  Builds the updateBox
+            var updateBox = document.createElement("input");
+            updateBox.classList.add("update-Box", "hide");
+            updateBox.type = "text";
+            updateBox.value = color.colorText;
+            updateBox.setAttribute("onkeyup", "controller.updateKeyup(this)");
+            updateBox.setAttribute("onfocusout", "controller.updateFocusOut(this)");
+            //  Builds the color item text label
+            var colorItemLabel = document.createElement("label");
+            colorItemLabel.setAttribute("onclick", "controller.updatingMode(this)");
+            colorItemLabel.textContent = color.colorText;
+            colorItemLabel.classList.add("color-label");
+            //  Builds the mobile edit button
+            var mobileEditButton = document.createElement("button");
+            mobileEditButton.setAttribute(
+                "onclick",
+                "controller.mobileUpdatingMode(this)"
+            );
+            mobileEditButton.textContent = "Edit";
+            mobileEditButton.classList.add("hide", "editButton");
+            //  Removes hide class on mobile edit button if mobile is detected as true
+            if (colorModel.isMobileDevice()) {
+                mobileEditButton.classList.remove("hide");
+            }
+            //  Toggles the strikethrough class when user clicks checkbox or toggle all.
+            if (color.completed === true) {
+                colorItemLabel.classList.add("colors-strikethrough");
+            } else {
+                colorItemLabel.classList.remove("colors-strikethrough");
+            }
+            //  Sets the position of the forEach loop as the id for the colorLi element we're building.
+            colorLi.id = position;
+            //  Displays checked or unchecked for checkbox depending on color item completed status.
+            if (color.completed === true) {
+                toggleCheckbox.checked = true;
+            } else {
+                toggleCheckbox.checked = false;
+            }
+            //  Adds the built-up toggleCheckbox as a child of the <li> element.
+            colorLi.appendChild(toggleCheckbox);
+            //  Adds the built-up color item label as a child of the <li> element.
+            colorLi.appendChild(colorItemLabel);
+            //  Add the text box with colors text after the color text node.
+            colorLi.appendChild(updateBox);
+            // Add the mobile edit button here
+            // colorLi.appendChild(mobileEditButton);
+            //  Adds the delete button as a child to the created <li> element by running the createDeleteButton method.
+            colorLi.appendChild(this.createDeleteButton());
+            // Adds the finalized <li> element in the beginning of the <ul> as a child of the <ul> element.
+            colorsUl.insertBefore(colorLi, colorsUl.childNodes[0]);
+        }, this);
+        //  Shows the toggleAll button if there's at least one color. Hides it if there's no colors.
+        var toggleAllButton = document.querySelector("#toggle-all-btn");
+        if (colorModel.countcolors().totalcolors > 0) {
+            toggleAllButton.classList.remove("hide");
+        } else {
+            toggleAllButton.classList.add("hide");
+        }
+        //  Shows the create color button if user types something. Once user removes their input or enter a new color, it will disappear.
+        var createcolorButton = document.querySelector("#create-color-btn");
+        var inputElement = document.getElementById("create-color-input");
+        if (inputElement.value) {
+            createcolorButton.classList.remove("hide");
+        } else {
+            createcolorButton.classList.add("hide");
+        }
+    },
+    toggleHide: function (selectedElement) {
+        //  Toggles the hide class which shows or hides the element being passed in.
+        selectedElement.classList.toggle("hide");
+    },
+    toggleTutorialDiv: function () {
+        var tutorialDiv = document.querySelector('.tutorial-div');
+        this.toggleHide(tutorialDiv);
+    },
+    createDeleteButton: function () {
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "x";
+        deleteButton.className = "delete-btn";
+        return deleteButton;
+    },
+    setUpEventListeners: function () {
+        var colorsUl = document.querySelector("ul");
+
+        colorsUl.addEventListener("click", function (event) {
+            //  Get the element that was clicked on.
+            var elementClicked = event.target;
+
+            //  Check if elementClicked is a delete button.//  Global variables declared for enter and escape keys.
+            if (elementClicked.className === "delete-btn") {
+                controller.deletecolor(parseInt(elementClicked.parentNode.id));
+            }
+        });
+    }
+};
+
+//  controller object represents the controller of this app.
+var controller = {
+    createcolor: function () {
+        var createcolorTextInput = document.getElementById("create-color-input");
+        colorModel.createcolor(createcolorTextInput.value);
+        createcolorTextInput.value = "";
+        view.displaycolors();
+    },
+    createcolorEntered: function () {
+        var inputElement = document.getElementById("create-color-input");
+        if (inputElement.value && event.keyCode === enter_key) {
+            // On mobile, defocuses input to hide soft keyboard so user can see their entered color item.
+            if (colorModel.isMobileDevice()) {
+                inputElement.blur();
+            }
+            this.createcolor();
+        }
+        view.displaycolors();
+    },
+    updateKeyup: function (updateInputElement) {
+        // Grabs id attribute from parent <li> element
+        var id = updateInputElement.parentNode.getAttribute("id");
+        // Grabs the new input value that the user entered.
+        var newUpdateInputValue = updateInputElement.value;
+        // If the there's something in the update box and enter key was pressed, then run the changecolor method. 
+        if (updateInputElement.value && event.keyCode === enter_key) {
+            this.changecolor(id, newUpdateInputValue);
+        }
+        // If the esc key was pressed then we reset the value back to the original stored value in our colors array.
+        if (event.keyCode === esc_key) {
+            //  Very important line. If the updateInputElement.value is not reset to the original value, then updateFocusOut method would still run and update the data even when esc key is pressed.
+            updateInputElement.value = colorModel.colors[id].colorText;
+            view.displaycolors();
+        }
+    },
+    updateFocusOut: function (updateInputElement) {
+        var id = updateInputElement.parentNode.getAttribute("id");
+        var newUpdateInputValue = updateInputElement.value;
+        if (updateInputElement.value) {
+            this.changecolor(id, newUpdateInputValue);
+        } else {
+            controller.deletecolor(id);
+        }
+    },
+    changecolor: function (id, value) {
+        colorModel.changecolor(id, value);
+        view.displaycolors();
+    },
+    deletecolor: function (position) {
+        colorModel.deletecolor(position);
+        view.displaycolors();
+    },
+    updatingMode: function (colorLabelElement) {
+        var updateBoxElement = colorLabelElement.parentNode.querySelector(
+            ".update-Box"
+        );
+        view.toggleHide(colorLabelElement);
+        view.toggleHide(updateBoxElement);
+        updateBoxElement.focus();
+    },
+    mobileUpdatingMode: function (editButtonElement) {
+        var updateBoxElement = editButtonElement.parentNode.querySelector(
+            ".update-Box"
+        );
+        var colorLabelElement = editButtonElement.parentNode.querySelector(
+            ".color-label"
+        );
+        view.toggleHide(colorLabelElement);
+        view.toggleHide(updateBoxElement);
+    },
+    //  The controller for the color item toggle. Takes the argument 'this' from the toggle check box in the DOM.
+    toggleCompleted: function (toggleElement) {
+        //  Gets the id from the parent (<li>) of the toggle check box and passes it to the toggleCompleted in the model. toggleCompleted switches the boolean value in the actual color item object.
+        colorModel.toggleCompleted(toggleElement.parentNode.getAttribute("id"));
+        //  Runs the view.displaycolors() to update the DOM so the user can see the changes.
+        view.displaycolors();
+    },
+    toggleAll: function () {
+        colorModel.toggleAll();
+        view.displaycolors();
+    }
+};
+
+view.setUpEventListeners();</script>
+
+	<footer>
+    <a href="http://validator.w3.org/check?uri=referer" style="text-decoration:none;">
+        <img src="../images/valid_html5.gif"  alt="Valid HTML 5" 
+        height="31" width="88" style="border:0px;" /> 
+    </a>
+
+    <a href="http://jigsaw.w3.org/css-validator/check/referer" style="text-decoration:none;">
+        <img style="border:0;width:88px;height:31px"
+        src="../images/vcss.gif" alt="Valid CSS!" />
+    </a>
+	 <br>&copy; 2020 - Designed by Safron Haile<br>
+
+
+</footer>
+	
+    <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
+</html>
